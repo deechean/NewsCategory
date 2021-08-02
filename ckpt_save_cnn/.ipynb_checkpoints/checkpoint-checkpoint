@@ -1,0 +1,2 @@
+model_checkpoint_path: "news_category-150000"
+all_model_checkpoint_paths: "news_category-150000"

@@ -1,0 +1,2 @@
+model_checkpoint_path: "combined_new_category-200000"
+all_model_checkpoint_paths: "combined_new_category-200000"
