@@ -51,6 +51,7 @@ def word2vector(reviews, model=model, max_length=1000):
         x_length.append(j)
         i += 1
     return vector_data, np.asarray(x_length)
+# Run cnn model
 
 def run_cnn_model(ckpt_dir, model_file):
     state_size = 64
@@ -105,7 +106,7 @@ def one_cnn_model(title,ckpt_dir, model_file):
             logits= sess.run([y],feed_dict={x:batch_data_vec, x_length:data_length})
     return logits[0]
 
-    
+#Run naive bayes model    
 def read_naive_bayes_word_vector(file_name):
     print("Load the naive bayes word vectors. It takes a few minutes.")
     fo = open(file_name, "r+")
@@ -161,6 +162,7 @@ def run_naive_bayes_model(word_matrix_file):
         prediction_list.append(predict)
     return prediction_list
 
+#Run combined model
 def one_combined_model(cnn_logits, naive_bayes_input, ckpt_dir, graph_file):
     graph = tf.Graph()
     with graph.as_default(): 

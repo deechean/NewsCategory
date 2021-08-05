@@ -4,6 +4,7 @@ import nltk
 import csv
 from itertools import islice
 import numpy as np
+import pandas as pd
 nltk.download('punkt')
 
 TOKENIZER_FILTER = (("'",""),('"',''),(',',' , '),('/',' / '),('\\',' \\ '),('.',' . '),('-',' - '),('+',''),(':',' : '))
@@ -91,6 +92,22 @@ LABEL_LIST=['CRIME',
              'CULTURE & ARTS']
 
 
+def print_all_class():
+    i = 0
+    organized_data = []
+    data_row = []
+    for label in LABEL_DIC:
+        if i < 5:
+            data_row.append(label)
+            data_row.append(LABEL_DIC[label])
+            i += 1
+        else:
+            organized_data.append(data_row)
+            data_row = []
+            i = 0
+    od = pd.DataFrame(organized_data, head(category, id, category, id,categoryname, id, category, id, category, id))
+    return od  
+    
 def getvector(word, model):
     if model.vocab.get(word.lower(),"NaN") == "NaN":
         lst = nltk.stem.LancasterStemmer()
