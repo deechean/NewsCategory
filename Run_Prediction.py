@@ -12,7 +12,7 @@ from gensim.test.utils import datapath, get_tmpfile
 from gensim.models import KeyedVectors
 from gensim.scripts.glove2word2vec import glove2word2vec
 
-glove_file = datapath('/home/ubuntu/Notebooks/GloVe/glove.6B.100d.txt')
+glove_file = datapath('C:/Users/Wangdi/Documents/Notebook/GloVe/glove.6B.100d.txt')
 word2vec_glove_file = get_tmpfile("glove.6B.100d.word2vec.txt")
 glove2word2vec(glove_file, word2vec_glove_file)
 model = KeyedVectors.load_word2vec_format(word2vec_glove_file)
@@ -109,7 +109,7 @@ def one_cnn_model(title,ckpt_dir, model_file):
 #Run naive bayes model    
 def read_naive_bayes_word_vector(file_name):
     print("Load the naive bayes word vectors. It takes a few minutes.")
-    fo = open(file_name, "r+")
+    fo = open(file_name, "r+", encoding='utf-8')
     reader = csv.reader(fo)
     word_matrix = []
     word_list = {}

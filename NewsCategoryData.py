@@ -105,7 +105,7 @@ def print_all_class():
             organized_data.append(data_row)
             data_row = []
             i = 0
-    od = pd.DataFrame(organized_data, head(category, id, category, id,categoryname, id, category, id, category, id))
+    od = pd.DataFrame(organized_data)#, head(category, id, category, id,category, id, category, id, category, id))
     return od  
     
 def getvector(word, model):
@@ -241,15 +241,11 @@ class NewsCategoryTrainTestSet:
         self.test_data = []
         self.test_label = []
         
-        with open(filename, "r") as fo: 
+        with open(filename, "r", encoding='utf-8') as fo: 
             reader = csv.reader(fo)
-            #i = 0
             for row in islice(reader,1,None):
                 if row[2] == "train":
-                    new_data = self._remove_quotation_mark(row[0].strip()[1:-1].split(","))
-                    #if i < 5:
-                    #    print(row[0].strip()[1:-1].split(","))
-                    #    i += 1
+                    new_data = self._remove_quotation_mark(row[0].strip()[1:-1].split(","))                
                     self.train_data.append(new_data)
                     self.train_label.append(int(row[1]))
                 elif row[2] == "test":
